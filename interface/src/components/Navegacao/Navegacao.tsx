@@ -12,6 +12,10 @@ function Navegacao() {
         return !!(isAuth && token && AuthRequests.checkTokenExpiry());
     });
 
+    const [username] = useState(() => {
+        return localStorage.getItem('username') ?? '';
+    });
+
     const estiloNavbar = {
         backgroundColor: 'var(--primaryColor)',
     }
@@ -37,6 +41,7 @@ function Navegacao() {
                                 <Nav.Link href="/pessoas" style={estiloNavOptions}>Pessoas</Nav.Link>
                             </Nav>
 
+                            <p style={{ color: 'white', margin: '0 1rem 0 0' }}>Olá, {username}</p>
                             <Button onClick={logout} variant='light'>Sair</Button>
                         </>
                     ) : (
